@@ -200,5 +200,5 @@ else
 
     }).listen(config.port);
 
-    console.log("thingproxy.freeboard.io process started (PID " + process.pid + ")");
+    console.log("CORS bypass running at (PID " + process.pid + ")");
 }

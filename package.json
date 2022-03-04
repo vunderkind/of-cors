@@ -1,5 +1,5 @@
 {
-  "name": "thingproxy.freeboard.io",
+  "name": "thingproxy-clone",
   "version": "0.0.1",
   "description": "A simple forward proxy server for processing API calls to servers that don't send CORS headers or support HTTPS.",
   "main": "server.js",
@@ -9,5 +9,8 @@
     "request": "2.40.0",
     "tokenthrottle": "1.1.0",
     "public-address": "^0.1.1"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
