@@ -110,10 +110,10 @@ function processRequest(req, res) {
         delete req.headers["origin"];
         delete req.headers["referer"];
 
-        if (remoteURL.host.includes("api.eu.onfido.com") && req.headers["Authorization"] === "Token token=serverside") {
+        if (remoteURL.host.includes("api.eu.onfido.com") && req.headers["authorization"] === "Token token=serverside") {
             req.headers = {
                 ...req.headers,
-                "Authorization": `Token token=${process.env.ONFIDO_TOKEN}`,
+                "authorization": `Token token=${process.env.ONFIDO_TOKEN}`,
             }
     
         }
