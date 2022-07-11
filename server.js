@@ -110,6 +110,14 @@ function processRequest(req, res) {
         delete req.headers["origin"];
         delete req.headers["referer"];
 
+        if (remoteURL.host.includes("api.eu.onfido.com") && req.headers["Authorization"] === "serverside") {
+            req.headers = {
+                ...req.headers,
+                "Authorization": `Token token=${process.env.ONFIDO_TOKEN}`,
+            }
+    
+        }
+
         var proxyRequest = request({
             url: remoteURL,
             headers: req.headers,
@@ -132,6 +140,7 @@ function processRequest(req, res) {
 
         var requestSize = 0;
         var proxyResponseSize = 0;
+
 
         req.pipe(proxyRequest).on('data', function (data) {
 
@@ -200,5 +209,5 @@ else
 
     }).listen(config.port);
 
-    console.log("CORS bypass running at (PID " + process.pid + ")");
+    console.log("CORS bypass running at (PID " + process.pid + "): http://localhost:" + config.port);
 }
